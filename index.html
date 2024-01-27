@@ -4,7 +4,7 @@
 <script>
 d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   //Get Scores for Specific House
-  var house_name = 'Tuttle-Dunnington';
+  var house_name = 'Courtnay';
   var houseData = data.filter(function(d) { return d.House === house_name; });
   const columnNames = data.columns
   const months = columnNames.slice(2, columnNames.length - 2);
