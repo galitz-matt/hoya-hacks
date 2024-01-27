@@ -23,12 +23,25 @@ nav a {
     color: black;
 }
 
+nav ul li a {
+    transition: all 0.3s ease; /* Smooth transition for the hover effect */
+    color: black; /* Initial color */
+}
+
+nav ul li a:hover {
+    color: #000000; /* Change text color on hover */
+    background-color: rgb(144, 173, 134); /* Change background color on hover */
+    padding: 5px; /* Add padding to make the hover effect more noticeable */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+
 .nav-image {
     width: 50px;
     vertical-align: middle;
 }
 
-body, html {
+body {
     background-color: #e2ebdd;
     font-family: 'Fira Sans', sans-serif;
     margin: 0;
@@ -42,6 +55,22 @@ body, html {
 
 .text-center {
     text-align: center;
+}
+
+.rotating-globe {
+    position: absolute;
+    top: 50%; /* Adjust as needed */
+    left: 10%; /* Adjust to offset the image */
+    width: 200px; /* Size of the image */
+    height: 200px; /* Size of the image */
+    animation: rotate 60s linear infinite;
+    z-index: -1; /* Ensures it stays behind the text */
+    transform-origin: 100px 100px;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .leaderboard {
@@ -60,17 +89,18 @@ body, html {
 
 .leaderboard-list-entry {
     background-color: #eaeaea; /* Gray background */
-    margin: 5px 0; /* Adds margin to top and bottom */
+    margin: 15px 0; /* Adds margin to top and bottom */
     padding: 20px 20px; /* Padding inside the list items */
     border-radius: 5px; /* Rounded corners for list items */
     display: flex; /* Makes it a flex container */
     justify-content: space-between; /* Spaces children with max space in-between */
     align-items: center; /* Aligns children vertically in the center */
+    outline: 2px solid #000000
 }
 
 .rank-name {
     text-align: left;
-    padding-right: 100px;
+    padding-right: 250px;
     font-size: 25px;
 }
 
