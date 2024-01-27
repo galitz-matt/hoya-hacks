@@ -52,38 +52,24 @@ body {
     text-align: center;
 }
 
-.leaderboard {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+/* Style the table */
+.leaderboard-table {
+    width: 75%; /* Adjust the width as needed */
+    border-collapse: collapse; /* Collapse borders so there's no space between them */
+    margin: 20px auto; /* Center the table in the section */
+    background-color: #dae3d7; /* Light green background for the table */
 }
 
-.leaderboard-list {
-    padding: 0;
-    margin: 0;
-    display: inline-block; /* Aligns the list in the center of its parent */
-    border-radius: 2px; /* Rounded corners */
+/* Style the table header */
+.leaderboard-table th {
+    border: 1px solid #aba3a3; /* Light grey border */
+    padding: 10px;
+    text-align: left; /* Align header text to the left */
 }
 
-.leaderboard-list-entry {
-    background-color: #eaeaea; /* Gray background */
-    margin: 10px 0; /* Adds margin to top and bottom */
-    padding: 20px 20px; /* Padding inside the list items */
-    border-radius: 5px; /* Rounded corners for list items */
-    display: flex; /* Makes it a flex container */
-    justify-content: space-between; /* Spaces children with max space in-between */
-    align-items: center; /* Aligns children vertically in the center */
-    outline: 2px solid #000000
-}
-
-.name {
-    text-align: left;
-    padding-right: 250px;
-    font-size: 25px;
-}
-
-.score {
-    text-align: right; /* Aligns score to the right */
-    padding-left: 20px;
-    font-size: 22px;
+/* Style the table data cells */
+.leaderboard-table td {
+    border: 1px solid #aba3a3; /* Light grey border */
+    padding: 10px;
+    text-align: left; /* Align cell text to the left */
 }

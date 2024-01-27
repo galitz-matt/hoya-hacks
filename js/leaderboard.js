@@ -1,31 +1,28 @@
 const leaderboardData = [
-    { name: "Lile-Maupin", score: 500 },
-    { name: "Watson-Webb", score: 400 },
-    { name: "Bond", score: 300 },
-    { name: "etc etc", score: 200 }
-]
+    { rank: 1, name: "Gibbons Dorm", score: 1500 },
+    { rank: 2, name: "Lyle-Maupin Dorm", score: 1000 },
+    { rank: 3, name: "McCormick Dorm", score: 500 },
+    // ... other entries ...
+];
 
-function populateHTMLLeaderboard(data) {
-    const leaderboard = document.getElementById("leaderboard-list");
-    leaderboard.innerHTML = ""; // clear existing list items
+// Function to populate the leaderboard table
+function populateLeaderboardTable(data) {
+    const table = document.querySelector(".leaderboard .leaderboard-table");
+    // Assuming the table is empty, add the header row first
+    let headerHtml = '<tr class="header-row"><th>Rank</th><th>Name</th><th>Score</th></tr>';
+    table.innerHTML = headerHtml; // Set the headers
 
+    // Populate the data rows
     data.forEach(entry => {
-        const listItem = document.createElement("li");
-        listItem.classList.add("leaderboard-list-entry");
-
-        const nameSpan = document.createElement("span");
-        nameSpan.textContent = entry.name;
-        nameSpan.classList.add("name");
-
-        const scoreSpan = document.createElement("span");
-        scoreSpan.textContent = entry.score;
-        scoreSpan.classList.add("score"); // Optional: for styling
-
-        listItem.appendChild(nameSpan);
-        listItem.appendChild(scoreSpan);
-
-        leaderboard.appendChild(listItem);
+        let rowHtml = `<tr>
+                         <td>${entry.rank}</td>
+                         <td>${entry.name}</td>
+                         <td>${entry.score}</td>
+                       </tr>`;
+        table.innerHTML += rowHtml; // Append the rows
     });
 }
 
-populateHTMLLeaderboard(leaderboardData);
+document.addEventListener('DOMContentLoaded', () => {
+    populateLeaderboardTable(leaderboardData);
+});
