@@ -2,12 +2,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 <canvas id="chart"></canvas>
 <script>
-d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy1.csv').then(function(data) {
+d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   //Get Scores for Specific House
   var house_name = 'Tuttle-Dunnington';
   var houseData = data.filter(function(d) { return d.House === house_name; });
-  const months = ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023'];
-
+  const columnNames = data.columns
+  const months = columnNames.slice(2, columnNames.length);
   var electricity = houseData.find(function(d) { return d.Type === 'Electricity'; });
   electricity = months.map(function(month) { 
     return electricity && electricity[month] ? parseFloat(electricity[month].replace(/,/g, '')) : 0; 
