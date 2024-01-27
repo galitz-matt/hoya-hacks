@@ -131,3 +131,10 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
   var minElectricScore = Object.entries(electricScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr)[0];
   var minChilledWaterScore = Object.entries(chilledWaterScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr)[0];
   var minHotWaterScore = Object.entries(hotWaterScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr)[0];
+
+//   console.log('Best Total Score:', minTotalScore);
+//   console.log('Best Electric Score:', minElectricScore);
+//   console.log('Best Chilled Water Score:', minChilledWaterScore);
+//   console.log('Best Hot Score:', minHotWaterScore);
+
+});
