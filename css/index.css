@@ -1,6 +1,7 @@
 nav {
     padding: 5px;
-    background-color: #9ebe92;
+    padding-top: 20px;
+    padding-left: 50px;
 }
 
 nav ul {
@@ -13,14 +14,20 @@ nav ul {
 
 nav li {
     display: inline;
-    margin: 0 20px;
+    margin: 15px;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 100;
 }
 
 nav a {
     text-decoration: none;
     color: black;
+}
+
+nav ul li {
+    font-size : 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight : 600;
 }
 
 nav ul li a {
@@ -43,7 +50,7 @@ nav ul li a:hover {
 
 body {
     background-color: #e2ebdd;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -102,4 +109,13 @@ body {
     text-align: right; /* Aligns score to the right */
     padding-left: 20px;
     font-size: 22px;
+}
+h1 {
+
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800; /* Assuming you want the heaviest weight for Raleway */
+}
+
+p {
+    font-family: 'Raleway', sans-serif;
 }
