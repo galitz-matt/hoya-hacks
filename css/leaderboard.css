@@ -48,23 +48,8 @@ body {
     padding: 0;
 }
 
-.blurb-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
 .text-center {
     text-align: center;
-}
-
-.rotating-globe {
-    position: absolute;
-    top: 25%; /* Adjust as needed */
-    left: 0%; /* Adjust to offset the image */
-    width: 200px; /* Size of the image */
-    height: 200px; /* Size of the image */
-    z-index: -1; /* Ensures it stays behind the text */
-    transform-origin: 200px 150 px;
 }
 
 .leaderboard {
@@ -74,7 +59,6 @@ body {
 }
 
 .leaderboard-list {
-    list-style-type: none;
     padding: 0;
     margin: 0;
     display: inline-block; /* Aligns the list in the center of its parent */
@@ -92,14 +76,10 @@ body {
     outline: 2px solid #000000
 }
 
-.rank-name {
+.name {
     text-align: left;
     padding-right: 250px;
     font-size: 25px;
 }
 
-.score {
-    text-align: right; /* Aligns score to the right */
-    padding-left: 20px;
-    font-size: 22px;
-}
+.score 
