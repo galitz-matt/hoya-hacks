@@ -25,7 +25,7 @@ function populateHTMLLeaderboard(data) {
         listItem.appendChild(scoreSpan);
 
         leaderboard.appendChild(listItem);
-    })
+    });
 }
 
 populateHTMLLeaderboard(leaderboardData);
