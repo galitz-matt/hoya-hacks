@@ -11,32 +11,41 @@
 <body>
     <nav class="text-center">
         <ul>
-            <li>Home</li>
-            <li>Leaderboard</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
             <li><img src="images/small-nav-pic.png" class="nav-image"></li>
-            <li>Dorms</li>
-            <li>About</li>
+            <li><a href="dorms.html">Dorms</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
     <main>
         <section class="blurb-container">
-            <h1 class="text-center">Green Rivalry: The UVA Dorm Energy Challenge</h1>
-            <p class="text-center">
+            <h1 class="text-center" style="font-size: 30px; padding-top: 20px;">Green Rivalry: The UVA Dorm Energy Challenge</h1>
+            <p class="text-center" style="font-size: 25px;">
                 Join the ultimate showdown of sustainability! Compete with your dorm mates to slash energy consumption and <b>win $20,000 for your dorm!</b> Track your progress, climb the leaderboard, and turn conservation into victory – all while securing a greener future for our campus.
             </p>
         </section>
-        
+
+        <h2 class="text-center" style="font-size: 30px; padding-top: 75px">The Top Three</h2>
         <section class="leaderboard">
-            <h2 class="text-center">Leaderboard</h2>
             <ul class="leaderboard-list">
-                <li id="entry-1" class="leaderboard-list-entry">1. Dorm in first place</li>
-                <li id="entry-2" class="leaderboard-list-entry">2. Dorm in second place</li>
-                <li id="entry-3" class="leaderboard-list-entry">3</li>
+                <li class="leaderboard-list-entry">
+                    <span class="rank-name">1 &nbsp;Gibbons Dorm</span>
+                    <span class="score">1500</span>
+                </li>
+                <li class="leaderboard-list-entry">
+                    <span class="rank-name">2 &nbsp;Lyle-Maupin Dorm</span>
+                    <span class="score">1000</span>
+                </li>
+                <li class="leaderboard-list-entry">
+                    <span class="rank-name">3 &nbsp;McCormick Dorm</span>
+                    <span class="score">500</span>
+                </li>
             </ul>
         </section>
     </main>
     <!-- <script src="leaderboard-script.js"></script> -->
 </body>
-<script src="js/leaderboard.js"></script>
+<script src="js/mini-leaderboard.js"></script>
 </html>
