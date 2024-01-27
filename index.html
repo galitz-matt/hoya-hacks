@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tab Title</title> <!-- TODO: change title -->
+    <title>Tab Title</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -12,6 +12,7 @@
             <li>Home</li>
             <li>Leaderboard</li>
             <li>Dorms</li>
+            <li>About</li>
         </ul>
     </nav>
     <main>
@@ -20,23 +21,32 @@
             <p class="text-center">
                 This is a placeholder for our blurb
             </p>
-        </section>
-        <section class="leaderboard-container">
-            <h2 class="text-center">Leaderboard</h2>
-            <div id="leaderboard" class="text-center">
-                <div class="leaderboard-card">
-                    <h3 class="dorm-name">Dorm 1</h3>
-                    <p class="energy consumption">Energy Consumption 1</p>
+            <section class="leaderboard-container">
+                <!-- Leaderboard Title -->
+                <h2 class="text-center">Top 3 Dorms with Least Energy Consumption per Capita</h2>
+                
+                <!-- Cards Container -->
+                <div class="leaderboard-cards-container">
+                    <!-- Card 1 -->
+                    <div class="leaderboard-card">
+                        <h3 class="dorm-name">Dorm 1</h3>
+                        <p class="energy-consumption">100 kWh/person</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="leaderboard-card">
+                        <h3 class="dorm-name">Dorm 2</h3>
+                        <p class="energy-consumption">90 kWh/person</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="leaderboard-card">
+                        <h3 class="dorm-name">Dorm 3</h3>
+                        <p class="energy-consumption">85 kWh/person</p>
+                    </div>
                 </div>
-                <div class="leaderboard-card">
-                    <h3 class="dorm-name">Dorm 2</h3>
-                    <p class="energy consumption">Energy Consumption 2</p>
-                </div>
-                <div class="leaderboard-card">
-                    <h3 class="dorm-name">Dorm 3</h3>
-                    <p class="energy consumption">Energy Consumption 3</p>
-                </div>
-            </div>
+            </section>
+
         </section>
     </main>
     <!-- <script src="leaderboard-script.js"></script> -->

@@ -1,4 +1,5 @@
 nav {
+    background-color: #f0f0f0;
     padding: 5px;
 }
 
@@ -19,4 +20,33 @@ nav a {
 
 .text-center {
     text-align: center
+}
+
+.leaderboard-container {
+    background-color: #f0f0f0; /* Background color of the rounded rectangle */
+    border-radius: 10px; /* Adjust the value to control roundness */
+    padding: 20px; /* Add padding for spacing */
+    text-align: center; /* Center text horizontally */
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Styling for the leaderboard title */
+.leaderboard-container h2 {
+    margin-bottom: 20px; /* Add space between the title and cards */
+}
+
+/* Styling for the cards container */
+.leaderboard-cards-container {
+    max-width: 400px; /* Set a maximum width for the cards container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Styling for the leaderboard cards */
+.leaderboard-card {
+    background-color: #ffffff; /* Card background color */
+    padding: 10px; /* Add padding for card content */
+    border-radius: 10px; /* Same roundness as the container */
+    margin-bottom: 10px; /* Add space between cards */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional box shadow for depth */
 }
