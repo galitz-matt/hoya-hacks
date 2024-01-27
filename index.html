@@ -6,7 +6,7 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
   var house_name = 'TUTTLE-DUNNINGTON';
   var houseData = data.filter(function(d) { return d.House === house_name; });
 
-  var months = ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023'];
+  const months = ['Jan 2023', 'Feb 2023', 'Mar 2023', 'Apr 2023', 'May 2023', 'Jun 2023', 'Jul 2023', 'Aug 2023', 'Sep 2023', 'Oct 2023', 'Nov 2023', 'Dec 2023'];
   var electricity = months.map(function(month) { return parseFloat(houseData[0][month].replace(/,/g, '')); });
   var hotWater = months.map(function(month) { return parseFloat(houseData[1][month].replace(/,/g, '')); });
   var water = months.map(function(month) { return parseFloat(houseData[2][month].replace(/,/g, '')); });
@@ -16,11 +16,10 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
   var z_hotWater = z_params.map(function(param) { return parseFloat(houseData[1][param].replace(/,/g, '')); });
   var z_water = z_params.map(function(param) { return parseFloat(houseData[2][param].replace(/,/g, '')); });
 
-  var z_score_electric = electricity.map(function(value) {return (value - z_electric[0]) / z_electric[1];});
-  var z_score_hotWater = hotWater.map(function(value) {return (value - z_hotWater[0]) / z_hotWater[1];});
-  var z_score_water = water.map(function(value) {return (value - z_water[0]) / z_water[1];});
+  var score_electric = electricity.map(function(value) {return ((value - z_electric[0]) / z_electric[1]) + 4;});
+  var score_hotWater = hotWater.map(function(value) {return ((value - z_hotWater[0]) / z_hotWater[1]) + 4;});
+  var score_water = water.map(function(value) {return ((value - z_water[0]) / z_water[1]) + 4;});
 
-  console.log(z_score_hotWater);
   var ctx = document.getElementById('chart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -28,23 +27,23 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
       labels: months,
       datasets: [{
         label: 'Electricity',
-        data: z_score_electric,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        data: score_electric,
+        backgroundColor: 'rgb(190, 156, 146, 0.2)',
+        borderColor: 'rgb(190, 156, 146, 1)',
         borderWidth: 1
       },
       {
         label: 'Hot Water',
-        data: z_score_hotWater,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        data: score_hotWater,
+        backgroundColor: 'rgb(178, 146, 190, 0.2)',
+        borderColor: 'rgb(178, 146, 190, 1)',
         borderWidth: 1
       },
       {
         label: 'Water',
-        data: z_score_water,
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        data: score_water,
+        backgroundColor: 'rgb(146, 180, 190, 0.2)',
+        borderColor: 'rgb(146, 180, 190, 1)',
         borderWidth: 1
       }]
     },
@@ -60,8 +59,8 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
         yAxes: [{
           stacked: true,
           ticks: {
-            min: -3,
-            suggestedMax: 3
+            min: 0,
+            suggestedMax: 18
           }
         }]
       }
@@ -69,3 +68,4 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
   });
 });
 </script>
+<script src="leaderboard.js"></script>
