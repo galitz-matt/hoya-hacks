@@ -1,4 +1,22 @@
-d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
+function populateLeaderboardTable(data) {
+  const table = document.querySelector(".leaderboard .leaderboard-table");
+  // Assuming the table is empty, add the header row first
+  let headerHtml = '<tr class="header-row"><th>Rank</th><th>Name</th><th>Score</th></tr>';
+  table.innerHTML = headerHtml; // Set the headers
+
+  // Populate the data rows
+  data.forEach(entry => {
+      let rowHtml = `<tr>
+                      <td>${entry.rank}</td>
+                      <td>${entry.name}</td>
+                      <td>${Math.trunc(entry.score)}</td>
+                    </tr>`;
+      table.innerHTML += rowHtml; // Append the rows
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   const columnNames = data.columns
   const months = columnNames.slice(2, columnNames.length - 2);
   var totalScores = {};
@@ -53,46 +71,15 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
       chilledWaterScores[element.House] = 0;
     }
     hotWaterScores[element.House] =  (lastHotWater - hotWaterMean) / hotWaterStd;
-    totalScores[element.House] = electricScores[element.House] + chilledWaterScores[element.House] + hotWaterScores[element.House];
+    totalScores[element.House] = (0.7*electricScores[element.House] + 0.1*chilledWaterScores[element.House] + 0.2*hotWaterScores[element.House]) * 1000;
   });
 
-  var minTotalScore = Object.entries(totalScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr, [null, Infinity]);
-  var minElectricScore = Object.entries(electricScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr, [null, Infinity]);
-  var minChilledWaterScore = Object.entries(chilledWaterScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr, [null, Infinity]);
-  var minHotWaterScore = Object.entries(hotWaterScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr, [null, Infinity]);
-
-//   console.log(totalScores);
-//   console.log('Best Total Score:', minTotalScore[0], minTotalScore[1]);
-//   console.log('Best Electric Score:', minElectricScore[0], minElectricScore[1]);
-//   console.log('Best Chilled Water Score:', minChilledWaterScore[0], minChilledWaterScore[1]);
-//   console.log('Best Hot Water Score:', minHotWaterScore[0], minHotWaterScore[1]);
+  var sortedTotalScores = Object.entries(totalScores).sort((a, b) => a[1] - b[1]);
+  const leaderboardData = sortedTotalScores.map((entry, index) => {
+    return { rank: index + 1, name: entry[0], score: entry[1] };
+  });
+    console.log(leaderboardData);
+  // Function to populate the leaderboard table
+    populateLeaderboardTable(leaderboardData);
+  });
 });
-
-// const leaderboardData = [
-//     { rank: 1, name: "Gibbons Dorm", score: 1500 },
-//     { rank: 2, name: "Lyle-Maupin Dorm", score: 1000 },
-//     { rank: 3, name: "McCormick Dorm", score: 500 },
-//     // ... other entries ...
-// ];
-
-// // Function to populate the leaderboard table
-// function populateLeaderboardTable(data) {
-//     const table = document.querySelector(".leaderboard .leaderboard-table");
-//     // Assuming the table is empty, add the header row first
-//     let headerHtml = '<tr class="header-row"><th>Rank</th><th>Name</th><th>Score</th></tr>';
-//     table.innerHTML = headerHtml; // Set the headers
-
-//     // Populate the data rows
-//     data.forEach(entry => {
-//         let rowHtml = `<tr>
-//                          <td>${entry.rank}</td>
-//                          <td>${entry.name}</td>
-//                          <td>${entry.score}</td>
-//                        </tr>`;
-//         table.innerHTML += rowHtml; // Append the rows
-//     });
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     populateLeaderboardTable(leaderboardData);
-// });
