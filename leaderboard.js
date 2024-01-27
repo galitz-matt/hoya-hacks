@@ -1,5 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-<script>
 d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   const columnNames = data.columns
   const months = columnNames.slice(2, columnNames.length - 2);
@@ -85,4 +83,3 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
       populateLeaderboardTable(leaderboardData);
   });
 });
-</script>
