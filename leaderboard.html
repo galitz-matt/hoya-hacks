@@ -3,7 +3,7 @@
 //Get Rankings
 d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   const columnNames = data.columns
-  const months = columnNames.slice(2, columnNames.length);
+  const months = columnNames.slice(2, columnNames.length - 2);
   var totalScores = {};
   var electricScores = {};
   var chilledWaterScores = {}; 

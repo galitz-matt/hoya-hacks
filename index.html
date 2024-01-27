@@ -7,7 +7,7 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
   var house_name = 'Tuttle-Dunnington';
   var houseData = data.filter(function(d) { return d.House === house_name; });
   const columnNames = data.columns
-  const months = columnNames.slice(2, columnNames.length);
+  const months = columnNames.slice(2, columnNames.length - 2);
   var electricity = houseData.find(function(d) { return d.Type === 'Electricity'; });
   electricity = months.map(function(month) { 
     return electricity && electricity[month] ? parseFloat(electricity[month].replace(/,/g, '')) : 0; 
