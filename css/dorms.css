@@ -1,0 +1,53 @@
+nav {
+    padding: 5px;
+    background-color: #9ebe92;
+}
+
+nav ul {
+    list-style-type: none;
+    display: inline-block;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a {
+    transition: all 0.3s ease; /* Smooth transition for the hover effect */
+    color: black; /* Initial color */
+}
+
+nav ul li a:hover {
+    color: #000000; /* Change text color on hover */
+    background-color: rgb(144, 173, 134); /* Change background color on hover */
+    padding: 5px; /* Add padding to make the hover effect more noticeable */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+
+.nav-image {
+    width: 50px;
+    vertical-align: middle;
+}
+
+body {
+    background-color: #e2ebdd;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.text-center {
+    text-align: center;
+}
