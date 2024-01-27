@@ -50,7 +50,8 @@ body {
 }
 
 .heading {
-    text-align: center
+    text-align: center;
+    padding-bottom: 25px;
 }
 
 .subheading, .subtext {
@@ -61,11 +62,13 @@ body {
 .subtext {
     max-width: 80%;
     font-size: 20px;
+    padding-bottom: 20px;
 }
 
 ul {
     text-align: left;
     padding-left: 13%;
+    padding-bottom: 20px;
     max-width: 80%;
     font-size: 20px;
 }
