@@ -1,7 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-<canvas id="chart"></canvas>
-<script>
 d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   //Get Scores for Specific House
   var house_name = 'Courtnay';
@@ -136,66 +132,9 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
   var minChilledWaterScore = Object.entries(chilledWaterScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr)[0];
   var minHotWaterScore = Object.entries(hotWaterScores).reduce((prev, curr) => prev[1] < curr[1] ? prev : curr)[0];
 
-  console.log('Best Total Score:', minTotalScore);
-  console.log('Best Electric Score:', minElectricScore);
-  console.log('Best Chilled Water Score:', minChilledWaterScore);
-  console.log('Best Hot Score:', minHotWaterScore);
+//   console.log('Best Total Score:', minTotalScore);
+//   console.log('Best Electric Score:', minElectricScore);
+//   console.log('Best Chilled Water Score:', minChilledWaterScore);
+//   console.log('Best Hot Score:', minHotWaterScore);
 
 });
-</script>
-=======
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;800&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <nav class="navbar">
-        <ul>
-            <li><img src="images/logo.png" class="nav-image" style="width: 100px"></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="dorms.html">Dorms</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section class="blurb-container">
-            <h1 class="text-center" style="font-size: 35px; padding-top: 20px; font-weight: 900;">Green Rivalry: The UVA Dorm Energy Challenge</h1>
-            <p class="text-center" style="font-size: 25px; font-weight: 100;">
-                Join the ultimate showdown of sustainability! Compete with your dorm mates to slash energy consumption and <b>win $20,000 for your dorm!</b> Track your progress, climb the leaderboard, and turn conservation into victory – all while securing a greener future for our campus.
-            </p>
-        </section>
-
-        <div class="rotating-globe">
-            <img src="images/rotating-globe.svg">
-        </div>
-
-        <h2 class="text-center" style="font-size: 40px; padding-top: 75px">The Top 3</h2>
-        <section class="leaderboard">
-            <ul class="leaderboard-list">
-                <li class="leaderboard-list-entry">
-                    <span class="rank-name">1 &nbsp;Gibbons Dorm</span>
-                    <span class="score">1500</span>
-                </li>
-                <li class="leaderboard-list-entry">
-                    <span class="rank-name">2 &nbsp;Lyle-Maupin Dorm</span>
-                    <span class="score">1000</span>
-                </li>
-                <li class="leaderboard-list-entry">
-                    <span class="rank-name">3 &nbsp;McCormick Dorm</span>
-                    <span class="score">500</span>
-                </li>
-            </ul>
-        </nav>
-    </body>
-</html>

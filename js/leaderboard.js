@@ -1,6 +1,22 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-<script>
-d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
+function populateLeaderboardTable(data) {
+  const table = document.querySelector(".leaderboard .leaderboard-table");
+  // Assuming the table is empty, add the header row first
+  let headerHtml = '<tr class="header-row"><th>Rank</th><th>Name</th><th>Score</th></tr>';
+  table.innerHTML = headerHtml; // Set the headers
+
+  // Populate the data rows
+  data.forEach(entry => {
+      let rowHtml = `<tr>
+                      <td>${entry.rank}</td>
+                      <td>${entry.name}</td>
+                      <td>${Math.trunc(entry.score)}</td>
+                    </tr>`;
+      table.innerHTML += rowHtml; // Append the rows
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   const columnNames = data.columns
   const months = columnNames.slice(2, columnNames.length - 2);
   var totalScores = {};
@@ -55,67 +71,15 @@ d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyear
       chilledWaterScores[element.House] = 0;
     }
     hotWaterScores[element.House] =  (lastHotWater - hotWaterMean) / hotWaterStd;
-    totalScores[element.House] = 0.7*electricScores[element.House] + 0.1*chilledWaterScores[element.House] + 0.2*hotWaterScores[element.House];
+    totalScores[element.House] = (0.7*electricScores[element.House] + 0.1*chilledWaterScores[element.House] + 0.2*hotWaterScores[element.House]) * 1000;
   });
 
   var sortedTotalScores = Object.entries(totalScores).sort((a, b) => a[1] - b[1]);
   const leaderboardData = sortedTotalScores.map((entry, index) => {
     return { rank: index + 1, name: entry[0], score: entry[1] };
   });
-  console.log(leaderboardData);
+    console.log(leaderboardData);
   // Function to populate the leaderboard table
-  function populateLeaderboardTable(data) {
-      const table = document.querySelector(".leaderboard .leaderboard-table");
-      // Assuming the table is empty, add the header row first
-      let headerHtml = '<tr class="header-row"><th>Rank</th><th>Name</th><th>Score</th></tr>';
-      table.innerHTML = headerHtml; // Set the headers
-
-      // Populate the data rows
-      data.forEach(entry => {
-          let rowHtml = `<tr>
-                          <td>${entry.rank}</td>
-                          <td>${entry.name}</td>
-                          <td>${entry.score}</td>
-                        </tr>`;
-          table.innerHTML += rowHtml; // Append the rows
-      });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-      populateLeaderboardTable(leaderboardData);
+    populateLeaderboardTable(leaderboardData);
   });
 });
-</script>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/leaderboard.css">
-    <title>Leaderboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar">
-        <ul>
-            <li><img src="images/logo.png" class="nav-image" style="width: 100px"></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="dorms.html">Dorms</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
-    
-    <main>
-        <h1 id="leaderboard-heading" class="text-center">Leaderboard</h1>
-        <section class="leaderboard">
-            <table class="leaderboard-table">
-            </table>
-        </section>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
-        <script src="js/leaderboard.js"></script>
-    </main>
-</body>
-</html>
