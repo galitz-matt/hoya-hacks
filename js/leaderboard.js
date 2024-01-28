@@ -14,7 +14,6 @@ function populateLeaderboardTable(data) {
       table.innerHTML += rowHtml; // Append the rows
   });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   d3.csv('https://raw.githubusercontent.com/KhanradCoder/hoya-hacks/main/firstyearhousing_monthy.csv').then(function(data) {
   const columnNames = data.columns
@@ -65,21 +64,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Calculate hotWater standard deviation
     var hotWaterStd = Math.sqrt(hotWaterVariance);
 
-    electricScores[element.House] = (lastElectricity - electricMean) / electricStd;
-    chilledWaterScores[element.House] = (lastChilledWater - chilledWaterMean) / chilledWaterStd;
+    electricScores[element.House] = ((lastElectricity - electricMean) / electricStd) + 4;
+    chilledWaterScores[element.House] = ((lastChilledWater - chilledWaterMean) / chilledWaterStd) + 4;
     if (isNaN(chilledWaterScores[element.House])) {
       chilledWaterScores[element.House] = 0;
     }
-    hotWaterScores[element.House] =  (lastHotWater - hotWaterMean) / hotWaterStd;
-    totalScores[element.House] = (0.7*electricScores[element.House] + 0.1*chilledWaterScores[element.House] + 0.2*hotWaterScores[element.House]) * 1000;
+    hotWaterScores[element.House] =  ((lastHotWater - hotWaterMean) / hotWaterStd) + 4;
+    totalScores[element.House] = Math.log((0.7*electricScores[element.House] + 0.1*chilledWaterScores[element.House] + 0.2*hotWaterScores[element.House]))*1000;
   });
 
   var sortedTotalScores = Object.entries(totalScores).sort((a, b) => a[1] - b[1]);
   const leaderboardData = sortedTotalScores.map((entry, index) => {
     return { rank: index + 1, name: entry[0], score: entry[1] };
   });
-    console.log(leaderboardData);
-  // Function to populate the leaderboard table
-    populateLeaderboardTable(leaderboardData);
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: leaderboardData.map(entry => entry.name),
+      datasets: [{
+        label: 'Score',
+        data: leaderboardData.map(entry => entry.score),
+        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(27, 162, 162, 0.2)'],
+        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(27, 162, 162, 1)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        legend: {
+          display: false // Add this line
+        }
+      }
+    }
+  });
   });
 });
